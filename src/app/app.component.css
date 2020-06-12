@@ -1,0 +1,9 @@
+.header{
+    background-color: rgb(104, 103, 103);
+}
+.addItem{
+    border: 1px red solid;
+    max-width: 80%;
+    margin: 0.5em auto;
+    padding: 0.5em;
+}
