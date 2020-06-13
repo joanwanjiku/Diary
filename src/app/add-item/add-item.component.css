@@ -8,3 +8,8 @@
     font-weight: bold;
     color: white;
 }
+.alert{
+    font-size: .875rem;
+    margin: 0;
+    padding: 0;
+}

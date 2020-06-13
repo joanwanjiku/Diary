@@ -1,1 +1,22 @@
-<p>list-item works!</p>
+<app-add-item (addEvent) = "addsEvent($event)"></app-add-item>
+
+<ng-container *ngFor="let event of events; let i = index">
+    <div class="card mt-1"  *ngIf="event.upvotes >= 0">
+        <div class="card-header">
+            {{event.name}}
+            </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>{{event.description}}.</p>
+                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>| Published: {{event.date | formatDate}}</footer>
+            </blockquote>   
+            <small (click)="toggleFooter(i)">details...</small>   
+        </div>    
+        <app-event-item-footer *ngIf="event.showFooter" [event] = "event" [attr.data-index] = "i" [index] ="i"  (canDelete)= "deleteEvent($event, i)"></app-event-item-footer>
+    
+    </div>
+</ng-container>
+
+
+
+

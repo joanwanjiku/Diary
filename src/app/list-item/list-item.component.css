@@ -1,0 +1,8 @@
+small{
+    color: blue;
+    font-weight: bold;
+}
+small:hover{
+    cursor: pointer;
+    color: darkblue;
+}

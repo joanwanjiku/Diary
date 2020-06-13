@@ -13,29 +13,42 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-    <form class="alCenter">   
+    <form class="alCenter" (ngSubmit)="onSubmit()" #eventForm = "ngForm">   
         <div class="modal-body">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" id="name" #name= "ngModel" name="name" minlength="6" [(ngModel)]="newEvent.name" required>
+                <div class="alert alert-danger mt-1" *ngIf="name.touched && !name.valid">
+                  <div *ngIf="name.errors.required">Name is required</div>
+                  <div *ngIf="name.errors.minlength">Name should be more than 6</div>  
+              </div>
+              Display {{newEvent.name}}
             </div>              
             
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" rows="3" name="description" #description= "ngModel" [(ngModel)]="newEvent.description" required></textarea>
+                <div class="alert alert-danger mt-1" *ngIf="description.touched && !description.valid">
+                  <div *ngIf="description.errors.required">Description is required</div>
+                  <div *ngIf="description.errors.minlength">Name should be more than 6</div>  
+              </div>
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input class="form-control" id="author">
+                <input class="form-control" id="author" name="author" #author= "ngModel" minlength="6" [(ngModel)]="newEvent.author" required>
+                <div class="alert alert-danger mt-1" *ngIf="author.touched && !author.valid">
+                  <div *ngIf="author.errors.required">Author is required</div>
+                  <div *ngIf="author.errors.minlength">Author should be more than 6</div>  
+              </div>
             </div>
             <div class="form-group">
                 <label for="date">Today's Date</label>
-                <input type="date" class="form-control" id="date">
+                <input type="date" class="form-control" id="date" name="date" #date= "ngModel" [(ngModel)]="newEvent.date" required>
             </div>               
         </div>
         <div class="row modal-footer justify-content-between">
             <div class="col-4">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Submit</button>
+                <button type="submit" class="btn btn-info">Add Event</button>
             </div>
             <div class="col-4">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
